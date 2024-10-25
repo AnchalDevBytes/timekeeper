@@ -13,13 +13,12 @@ export default function HomePage() {
   ]);
   const [isCreateEventOpen, setIsCreateEventOpen] = useState(false);
   const [newEvent, setNewEvent] = useState({ title: '', date: '', time: '', description: '' });
-  
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 md:p-8">
+      <div className="w-full md:max-w-7xl md:mx-auto bg-white md:rounded-xl md:shadow-xl overflow-hidden">
         <Header/>
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <LeftPanel 
             currentDate={currentDate}
             setCurrentDate={setCurrentDate}

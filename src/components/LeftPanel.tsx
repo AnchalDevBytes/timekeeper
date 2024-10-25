@@ -31,12 +31,12 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
       };
 
   return (
-    <aside className="w-64 bg-gray-100 p-4">
+    <aside className="w-full md:w-64 bg-gray-100 p-4">
         <div className="flex justify-between items-center mb-4">
             <button onClick={prevMonth} className="p-2 text-gray-600 hover:bg-gray-200 rounded">
             <IoIosArrowBack className="h-4 w-4" />
             </button>
-            <span className="font-semibold">
+            <span className="font-semibold text-black">
             {currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
             </span>
             <button onClick={nextMonth} className="p-2 text-gray-600 hover:bg-gray-200 rounded">

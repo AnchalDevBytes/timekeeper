@@ -14,17 +14,17 @@ const Calendar : React.FC<CalendarInterface> = ({currentDate, events }) => {
             </div>
             ))}
             {Array.from({ length: firstDayOfMonth }, (_, i) => (
-            <div key={`empty-${i}`} className="h-24 bg-gray-100 rounded-lg"></div>
+            <div key={`empty-${i}`} className="h-16 md:h-24 bg-gray-100 rounded-lg"></div>
             ))}
             {Array.from({ length: daysInMonth }, (_, i : number) => {
             const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i + 1)
             const dateString = date.toISOString().split('T')[0]
             const dayEvents = events.filter((event) => event.date === dateString)
             return (
-                <div key={i} className="h-24 bg-white rounded-lg shadow p-2 overflow-y-auto">
+                <div key={i} className="h-16 md:h-24 bg-white rounded-lg shadow p-2 overflow-y-auto">
                 <div className="font-semibold text-black">{i + 1}</div>
                 {dayEvents.map((event) => (
-                    <div key={event.id} className="text-xs bg-blue-100 rounded p-1 mb-1">
+                    <div key={event.id} className="text-xs bg-blue-100 rounded p-1 mb-1 text-black truncate">
                     {event.title}
                     </div>
                 ))}

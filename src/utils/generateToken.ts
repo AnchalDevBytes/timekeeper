@@ -9,3 +9,7 @@ export const generateToken = ( user: { id: number; email: string; name?: string 
         name: user.name
     }, tokenSecret, { expiresIn : '1d' });
 }
+
+export const verifyToken = (token : string) => {
+    return jwt.verify(token, tokenSecret);
+}

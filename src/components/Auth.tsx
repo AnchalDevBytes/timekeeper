@@ -92,7 +92,7 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
   }, []);
 
   return (
-    <div className="min-h-screen  pt-[65px] relative bg-teal-50 flex flex-col justify-center items-center p-4 sm:p-8">
+    <div className="h-screen pt-[65px] relative bg-gradient-to-br from-blue-100 to-purple-100 flex flex-col justify-center items-center p-4 sm:p-8">
       <div className="p-6 sm:p-8 rounded-lg shadow-lg max-w-md w-full">
         <div className="text-center text-teal-800">
           <h1 className="text-3xl font-bold">
@@ -139,7 +139,7 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
           />
           <button
             type="submit"
-            className="border-2 bg-teal-500 text-white w-full py-2 px-5 rounded-lg"
+            className="border-2 bg-gradient-to-br from-blue-300 to-purple-300 text-white w-full py-2 px-5 rounded-lg"
           >
             {type === "signup" && (isLoading.signup ? "...loading" : "Signup")}
             {type === "signin" && (isLoading.signin ? "...loading" : "Signin")}

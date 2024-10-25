@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen w-full bg-emerald-200 lg:bg-emerald-50">
+        <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 to bg-purple-100">
           {children}
         </div>
         <ToastContainer

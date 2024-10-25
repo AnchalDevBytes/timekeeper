@@ -1,4 +1,4 @@
-import { generateToken } from "@/helpers/generateToken";
+import { generateToken } from "@/utils/generateToken";
 import { prisma } from "@/server/prisma";
 import { User } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
