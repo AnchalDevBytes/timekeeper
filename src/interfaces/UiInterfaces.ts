@@ -1,4 +1,5 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
+import { ChangeEventHandler } from "react";
 
 export interface Event {
     id: number;
@@ -45,4 +46,12 @@ export interface EventFormInterface {
 export interface CalendarInterface {
     currentDate : Date;
     events : Event[]
+}
+
+export interface labelledInputType {
+    label : string,
+    id: string,
+    type?: "text" | "password" | "email",
+    placeholder: string,
+    changeHandler: ChangeEventHandler
 }
