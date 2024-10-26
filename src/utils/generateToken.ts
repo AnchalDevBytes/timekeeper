@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 const tokenSecret = process.env.TOKEN_SECRET ?? "tokenSecret";
 
@@ -11,5 +11,6 @@ export const generateToken = ( user: { id: number; email: string; name?: string 
 }
 
 export const verifyToken = (token : string) => {
-    return jwt.verify(token, tokenSecret);
+    const verifiedUser = jwt.verify(token, tokenSecret) as JwtPayload;
+    return verifiedUser;
 }

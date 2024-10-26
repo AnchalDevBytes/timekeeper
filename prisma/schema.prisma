@@ -27,7 +27,7 @@ model Event {
   id           Int         @id       @default(autoincrement())
   title        String
   description  String?
-  eventDate    DateTime
+  eventDate    String
   eventTime    String
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
