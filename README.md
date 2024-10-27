@@ -2,6 +2,12 @@
 
 This is a full-stack calendar application built with modern web technologies including Next.js, PostgreSQL, Prisma, NeonDB, TypeScript, and Tailwind CSS. The application allows users to create, update, delete, and view events on a calendar.
 
+## Screeshot
+
+![signin](./public/signin.png)
+![calendar](./public/calendar.png)
+![updateCalendar](./public/update.png)
+
 ## Features
 
 - **Event Management**: Create, update, and delete events.
