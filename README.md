@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TimeKeeper (Full-Stack Calendar Application)
+
+This is a full-stack calendar application built with modern web technologies including Next.js, PostgreSQL, Prisma, NeonDB, TypeScript, and Tailwind CSS. The application allows users to create, update, delete, and view events on a calendar.
+
+## Features
+
+- **Event Management**: Create, update, and delete events.
+- **Calendar View**: Display events in a weekly calendar format.
+- **User Authentication**: Secure authentication using JSON Web Tokens (JWT).
+- **Responsive Design**: Optimized for both mobile and desktop views using Tailwind CSS.
+- **Backend Integration**: Uses Prisma as an ORM with PostgreSQL for data storage.
+- **Modern Development Practices**: Written in TypeScript for strong typing and better code quality.
+
+## Tech Stack
+
+- **Frontend**: [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/)
+- **Backend**: [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction), [Prisma](https://www.prisma.io/), [PostgreSQL](https://www.postgresql.org/), [NeonDB](https://neon.tech/)
+- **Deployment**: Frontend deployed on Vercel.
+
+## Prerequisites
+
+Before running the application, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/)
+- [PostgreSQL](https://www.postgresql.org/) (for local development)
+- [NeonDB](https://neon.tech/) account for database hosting
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally:
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/AnchalDevBytes/timekeeper.git
+cd timekeeper
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Set Up the Database**
+    - Create a PostgreSQL database locally or use NeonDB for cloud hosting.
+    - Configure the database connection string in the .env file:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    DATABASE_URL="postgresql://username:password@hostname:port/database_name"
+    ```
 
-## Learn More
+4. **Configure Environment Variables**
+    ```bash
+    DATABASE_URL="your-database-connection-string"
+    API_BASE_URL="http://localhost:3000"
+    TOKEN_SECRET="your-secret-key"
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+5. **Run Prisma Migrations**
+    ```bash
+    npx prisma migrate dev --name init
+    npx prisma generate
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. **Run the development server:**
+    ```bash
+   npm run dev
+   ```
+The app will be available at http://localhost:3000.
