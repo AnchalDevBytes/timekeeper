@@ -1,18 +1,42 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import LeftPanel from '@/components/LeftPanel';
 import { Event } from '@/interfaces/UiInterfaces';
 import Calendar from '@/components/Calendar';
+import axiosClient from '@/lib/axiosClient';
+import { toast } from 'react-toastify';
 
 export default function HomePage() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState<Event[]>([
-    { id: 1, title: 'Team Meeting', date: '2023-05-15', time: '10:00', description: 'Weekly team sync' },
-    { id: 2, title: 'Project Deadline', date: '2023-05-20', time: '18:00', description: 'Submit final project' },
-  ]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [isCreateEventOpen, setIsCreateEventOpen] = useState(false);
-  const [newEvent, setNewEvent] = useState({ title: '', date: '', time: '', description: '' });
+  const [newEvent, setNewEvent] = useState({ title: '', eventDate: '', eventTime: '', description: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
+
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+        try {
+            setIsLoading(true);
+            const { data } = await axiosClient.get("/api/getAllEvent");
+            if(data.success !== true) {
+                toast.error(data.message);
+            } else {
+                setEvents(data.events);
+            }
+        } catch (error) {
+            if(error instanceof Error) {
+                toast.error(error.message);
+            } else {
+            toast.error("Unknown error while creating event...");
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    }
+    fetchAllEvents();
+}, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 md:p-8">
@@ -28,8 +52,17 @@ export default function HomePage() {
             setIsCreateEventOpen={setIsCreateEventOpen}
             newEvent={newEvent}
             setNewEvent={setNewEvent}
+            isLoading={isLoading}
+            editingEvent={editingEvent}
+            setEditingEvent={setEditingEvent}
           />
-          <Calendar currentDate={currentDate} events={events}/>
+          <Calendar 
+            currentDate={currentDate} 
+            events={events}
+            setNewEvent={setNewEvent}
+            setEditingEvent={setEditingEvent}
+            setIsCreateEventOpen={setIsCreateEventOpen}
+          />
         </div>
       </div>
     </div>

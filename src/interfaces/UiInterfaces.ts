@@ -4,15 +4,15 @@ import { ChangeEventHandler } from "react";
 export interface Event {
     id: number;
     title: string;
-    date: string;
-    time: string;
+    eventDate: string;
+    eventTime: string;
     description: string;
 }
 
 export interface NewEvent {
     title: string;
-    date: string;
-    time: string;
+    eventDate: string;
+    eventTime: string;
     description: string;
 }
 
@@ -25,27 +25,26 @@ export interface LeftPanelInterface {
     setIsCreateEventOpen : Dispatch<SetStateAction<boolean>>
     newEvent : NewEvent
     setNewEvent : Dispatch<SetStateAction<NewEvent>>
+    isLoading : boolean
+    editingEvent : Event | null
+    setEditingEvent : Dispatch<SetStateAction<Event | null>>
+
 }
 
 export interface EventFormInterface {
-    newEvent : {
-        title: string;
-        date: string;
-        time: string;
-        description: string;
-    }
-    setNewEvent : Dispatch<SetStateAction<{
-        title: string;
-        date: string;
-        time: string;
-        description: string;
-    }>>
+    newEvent : NewEvent
+    setNewEvent : Dispatch<SetStateAction<NewEvent>>
     handleCreateEvent : (e : FormEvent) => void;
+    handleUpdateEvent : (e : FormEvent) => void;
+    editingEvent : Event | null
 }
 
 export interface CalendarInterface {
     currentDate : Date;
     events : Event[]
+    setNewEvent : Dispatch<SetStateAction<NewEvent>>
+    setEditingEvent : Dispatch<SetStateAction<Event | null>>
+    setIsCreateEventOpen : Dispatch<SetStateAction<boolean>>
 }
 
 export interface labelledInputType {

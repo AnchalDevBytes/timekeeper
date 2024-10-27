@@ -3,13 +3,17 @@ import { EventFormInterface } from '@/interfaces/UiInterfaces';
 const EventForm : React.FC<EventFormInterface> = ({ 
     newEvent,
     setNewEvent,
-    handleCreateEvent
+    handleCreateEvent,
+    handleUpdateEvent,
+    editingEvent
 }) => {
     
   return (
     <div className="mb-4 p-4 bg-white rounded shadow">
-        <h3 className="font-semibold mb-2 text-black">Create New Event</h3>
-        <form onSubmit={handleCreateEvent} className="space-y-4">
+        <h3 className="font-semibold mb-2 text-black">
+            { editingEvent ? "Update Event" : "Create New Event" }
+        </h3>
+        <form onSubmit={ editingEvent ? handleUpdateEvent : handleCreateEvent } className="space-y-4">
             <input
             className="w-full border rounded p-2 text-black"
             placeholder="Title"
@@ -20,15 +24,15 @@ const EventForm : React.FC<EventFormInterface> = ({
             <input
             className="w-full border rounded p-2 text-black"
             type="date"
-            value={newEvent.date}
-            onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
+            value={newEvent.eventDate}
+            onChange={(e) => setNewEvent({ ...newEvent, eventDate: e.target.value })}
             required
             />
             <input
             className="w-full border rounded p-2 text-black"
             type="time"
-            value={newEvent.time}
-            onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+            value={newEvent.eventTime}
+            onChange={(e) => setNewEvent({ ...newEvent, eventTime: e.target.value })}
             required
             />
             <textarea
@@ -37,7 +41,9 @@ const EventForm : React.FC<EventFormInterface> = ({
             value={newEvent.description}
             onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
             />
-            <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">Create Event</button>
+            <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">
+              { editingEvent ? "Update Event" : "Create New Event" }
+            </button>
         </form>
     </div>
   )
