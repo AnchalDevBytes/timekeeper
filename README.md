@@ -6,7 +6,7 @@ This is a full-stack calendar application built with modern web technologies inc
 
 ![signin](./public/signin.png)
 ![calendar](./public/calendar.png)
-![updateCalendar](./public/update.png)
+![updateCalendar](./public/calendarMobileView.png)
 
 ## Features
 
