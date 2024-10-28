@@ -4,6 +4,7 @@ import axiosClient from '@/lib/axiosClient';
 import { AxiosResponse } from 'axios';
 import React, { useState } from 'react'
 import { CiUser } from 'react-icons/ci'
+import { FaCalendarAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const Header = () => {
@@ -35,20 +36,20 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-white">Calendar App</h1>
-        <div className="flex items-center space-x-4">
+    <header className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 flex justify-between items-center shadow-lg">
+      <div className="flex items-center space-x-2">
+        <FaCalendarAlt className="text-white text-3xl" />
+        <h1 className="text-2xl font-bold text-white tracking-wide">Calendar App</h1>
+      </div>
+      <div className="flex items-center space-x-4">
         <button 
           onClick={handleLogout}
-          className="text-black hover:text-blue-600 active:scale-75 bg-gray-100 px-4 py-1 rounded-md flex items-center"
+          className="text-white bg-purple-500 hover:bg-purple-600 active:scale-95 px-6 py-2 rounded-full flex items-center transition-all duration-200 ease-in-out shadow-md hover:shadow-lg"
         >
-            <CiUser className="mr-2 h-5 w-5" />
-            {isLoading ? "logging out..." : "Logout"}
+          <CiUser className="mr-2 h-5 w-5" />
+          {isLoading ? "Logging out..." : "Logout"}
         </button>
-        <div className="w-9 h-9 flex items-center justify-center rounded-full overflow-hidden bg-gray-300">
-            <CiUser className='h-6 w-6 text-black'/>
-        </div>
-        </div>
+      </div>
     </header>
   )
 }

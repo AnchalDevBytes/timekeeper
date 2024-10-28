@@ -2,14 +2,13 @@ import React, { FormEvent } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { HiPlus } from 'react-icons/hi';
 import { LeftPanelInterface } from '@/interfaces/UiInterfaces';
-import EventForm from '@/components/EventForm';
 import { toast } from 'react-toastify';
 import axiosClient from '@/lib/axiosClient';
 import { CreateEventResponseData } from '@/interfaces/createEventResponseData';
 import { AxiosResponse } from 'axios';
-import SkeletonEvent from './SkeletonEvent';
 import { UpdatedEventResponseData } from '@/interfaces/updatedEventResponseData';
 import { AiTwotoneDelete } from 'react-icons/ai';
+import { EventForm, SkeletonEvent } from "@/components";
 
 const LeftPanel : React.FC<LeftPanelInterface> = ({ 
     currentDate,
@@ -96,16 +95,16 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
       }
 
   return (
-    <aside className="w-full md:w-64 bg-gray-100 p-4">
+    <aside className="w-full lg:w-96 bg-white p-4 border-b lg:border-r border-gray-200">
         <div className="flex justify-between items-center mb-4">
-            <button onClick={prevMonth} className="p-2 text-gray-600 hover:bg-gray-200 rounded">
-            <IoIosArrowBack className="h-4 w-4" />
+            <button onClick={prevMonth} className="p-2 text-purple-600 hover:bg-purple-100 rounded-full transition-colors duration-200">
+            <IoIosArrowBack className="h-6 w-6" />
             </button>
-            <span className="font-semibold text-black">
+            <span className="font-bold text-xl text-purple-600">
             {currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
             </span>
-            <button onClick={nextMonth} className="p-2 text-gray-600 hover:bg-gray-200 rounded">
-            <IoIosArrowForward className="h-4 w-4" />
+            <button onClick={nextMonth} className="pp-2 text-purple-600 hover:bg-purple-100 rounded-full transition-colors duration-200">
+            <IoIosArrowForward className="h-6 w-6" />
             </button>
         </div>
         {isCreateEventOpen && (
@@ -117,25 +116,25 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
                 editingEvent={editingEvent}
             />
         )}
-        <button onClick={() => setIsCreateEventOpen(!isCreateEventOpen)} className="w-full mb-4 p-2 bg-black text-white rounded flex items-center">
-        <HiPlus className="mr-2 h-4 w-4" />
+        <button onClick={() => setIsCreateEventOpen(!isCreateEventOpen)} className="w-full mb-6 p-3 bg-gradient-to-r from-blue-500 to bg-purple-600 text-white rounded-lg flex items-center justify-center hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg hover:translate-y-1">
+        <HiPlus className="mr-2 h-5 w-5" />
             Create Event
         </button>
-        <div className="space-y-2">
+        <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-300px)]">
             {
               isLoading ? (
                 <SkeletonEvent/>
               ) : (
                 events.map((event) => (
-                  <div key={event.id} className="flex  justify-between bg-white rounded shadow p-4">
+                  <div key={event.id} className="flex  justify-between bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 transform hover:translate-y-1 border-l-4 border-purple-500">
                       <div className='flex flex-col gap-0'>
-                        <h3 className="font-semibold text-black">{event.title}</h3>
-                        <p className="text-sm text-gray-500">
+                        <h3 className="font-semibold text-purple-600">{event.title}</h3>
+                        <p className="text-sm text-gray-600">
                           {event.eventDate} at {event.eventTime}
                         </p>
                       </div>
                       <button onClick={() => handleEventDeletion(event.id)}>
-                        <AiTwotoneDelete className='text-lg text-red-400' />
+                        <AiTwotoneDelete className='text-lg text-red-400 hover:text-red-500 transition-colors duration-200' />
                       </button>
                   </div>
                 ))

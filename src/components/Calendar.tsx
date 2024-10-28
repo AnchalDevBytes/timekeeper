@@ -9,7 +9,7 @@ const Calendar : React.FC<CalendarInterface> = ({ currentDate, events, setEditin
     <div className="flex-1 p-4">
         <div className="grid grid-cols-7 gap-2">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="text-center font-semibold text-gray-500">
+            <div key={day} className="text-center font-semibold text-purple-500">
                 {day}
             </div>
             ))}
@@ -22,11 +22,11 @@ const Calendar : React.FC<CalendarInterface> = ({ currentDate, events, setEditin
             const dayEvents = events.filter((event) => event.eventDate === dateString)
             return (
                 <div key={i} className="h-16 md:h-24 bg-white rounded-lg shadow p-2 overflow-y-auto">
-                <div className="font-semibold text-black">{i + 1}</div>
+                <div className="font-semibold text-blue-600">{i + 1}</div>
                 {dayEvents.map((event) => (
                     <div 
                         key={event.id} 
-                        className="text-xs bg-blue-100 rounded p-1 mb-1 cursor-pointer text-black truncate"
+                        className="text-xs bg-purple-100 rounded p-1 mb-1 cursor-pointer text-black truncate"
                         onClick={() => {
                             setNewEvent({
                                 title : event.title,

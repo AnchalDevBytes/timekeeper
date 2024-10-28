@@ -92,9 +92,9 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
   }, []);
 
   return (
-    <div className="h-screen pt-[65px] relative bg-gradient-to-br from-blue-100 to-purple-100 flex flex-col justify-center items-center p-4 sm:p-8">
+    <div className="h-screen pt-[65px] bg-gradient-to-br from-blue-100 to-purple-100 flex flex-col justify-center items-center p-4 sm:p-8">
       <div className="p-6 sm:p-8 rounded-lg shadow-lg max-w-md w-full">
-        <div className="text-center text-teal-800">
+        <div className="text-center text-purple-800">
           <h1 className="text-3xl font-bold">
             {type === "signup" ? "Sign Up" : "Sign In"}
           </h1>
@@ -145,13 +145,13 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
             {type === "signin" && (isLoading.signin ? "...loading" : "Signin")}
           </button>
         </form>
-        <div className="text-center text-slate-400 text-muted-foreground mt-5">
+        <div className="text-center text-purple-400 text-muted-foreground mt-5">
           {type === "signup"
             ? "Already have an account ?"
             : "Don't have an account ?"}{" "}
           <Link
             href={type === "signup" ? "/signin" : "/signup"}
-            className="text-slate-600 font-medium hover:underline"
+            className="text-purple-600 font-medium hover:underline"
           >
             {type === "signup" ? "Sign In" : "Sign Up"}
           </Link>
