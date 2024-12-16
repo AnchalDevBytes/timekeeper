@@ -26,6 +26,21 @@ export async function POST(req: NextRequest) {
             )
         }
 
+        const overlappingEvent = await prisma.event.findFirst({
+            where : {
+                userId,
+                eventDate : eventDate,
+                eventTime : eventTime
+            },
+        });
+
+        if(overlappingEvent) {
+            return NextResponse.json({
+                success : false,
+                message : "An event is already exists at this time",
+            });
+        }
+
         const event = await prisma.event.create({
             data: {
                 title : title,

@@ -2,7 +2,6 @@ import { prisma } from "@/server/prisma";
 import { verifyToken } from "@/utils/generateToken";
 import { NextRequest, NextResponse } from "next/server";
 
-
 interface updateEventRequestBody {
     title?: string;
     description?: string;
@@ -30,6 +29,21 @@ export async function POST(req: NextRequest) {
         }
 
         const { title, description, eventDate, eventTime } : updateEventRequestBody = await req.json();
+
+        const overlappingEvent = await prisma.event.findFirst({
+            where : {
+                userId,
+                eventDate : eventDate,
+                eventTime : eventTime
+            },
+        });
+
+        if(overlappingEvent) {
+            return NextResponse.json({
+                success : false,
+                message : "An event is already exists at this time",
+            });
+        }
 
         const updatedEvent = await prisma.event.update({
             where : { id: Number(eventId), userId: userId },
