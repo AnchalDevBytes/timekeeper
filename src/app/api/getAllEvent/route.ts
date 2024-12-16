@@ -12,7 +12,10 @@ export async function GET(req : NextRequest) {
         }
 
         const events = await prisma.event.findMany({
-            where : { userId : userId }
+            where : { userId : userId },
+            orderBy : {
+                createdAt : "desc"
+            }
         });
         
         if(!events) {

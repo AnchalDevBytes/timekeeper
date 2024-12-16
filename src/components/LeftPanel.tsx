@@ -39,7 +39,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
           if(data.success !== true) {
             toast.error(data.message);
           } else {
-            setEvents([...events, data.event]);
+            setEvents([data.event, ...events]);
             setNewEvent({ title: '', eventDate: '', eventTime: '', description: '' });
             setIsCreateEventOpen(false);
             toast.success(data.message);
