@@ -20,6 +20,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
     setIsCreateEventOpen,
     setNewEvent,
     isLoading,
+    setIsLoading,
     editingEvent,
     setEditingEvent,
 }) => {
@@ -35,6 +36,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
       const handleCreateEvent = async (e : FormEvent) => {
         e.preventDefault();
         try {
+          setIsLoading({eventList : false, createEvent: true, updateEvent : false});
           const { data } : AxiosResponse<CreateEventResponseData> = await axiosClient.post("/api/create-event", newEvent);
           if(data.success !== true) {
             toast.error(data.message);
@@ -50,6 +52,8 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
           } else {
             toast.error("Unknown error while creating event...");
           }
+        } finally {
+          setIsLoading({eventList : false, createEvent: false, updateEvent : false});
         }
       };
 
@@ -57,6 +61,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
         e.preventDefault();
         if(!editingEvent) return;
         try {
+          setIsLoading({eventList : false, createEvent: false, updateEvent : true});
           const { data } : AxiosResponse<UpdatedEventResponseData> = await axiosClient.post(`/api/updateEvent/?id=${editingEvent?.id}`, newEvent);
           if(data.success !== true) {
             toast.error(data.message);
@@ -73,6 +78,8 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
           } else {
             toast.error("Unknown error while updating event...");
           }
+        } finally {
+          setIsLoading({eventList : false, createEvent: false, updateEvent : false});
         }
       }
 
@@ -122,6 +129,8 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
                 newEvent={newEvent}
                 setNewEvent={setNewEvent}
                 editingEvent={editingEvent}
+                createEventLoading={isLoading.createEvent}
+                updateEventLoading={isLoading.updateEvent}
             />
         )}
         <button onClick={() => setIsCreateEventOpen(!isCreateEventOpen)} className="w-full mb-6 p-3 bg-gradient-to-r from-blue-500 to bg-purple-600 text-white rounded-lg flex items-center justify-center hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg hover:translate-y-1">
@@ -130,7 +139,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
         </button>
         <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-300px)]">
             {
-              isLoading ? (
+              isLoading.eventList ? (
                 <SkeletonEvent/>
               ) : (
                 filteredEvents.map((event) => (

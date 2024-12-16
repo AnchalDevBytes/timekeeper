@@ -25,7 +25,8 @@ export interface LeftPanelInterface {
     setIsCreateEventOpen : Dispatch<SetStateAction<boolean>>
     newEvent : NewEvent
     setNewEvent : Dispatch<SetStateAction<NewEvent>>
-    isLoading : boolean
+    isLoading : { eventList: boolean; createEvent: boolean; updateEvent: boolean; }
+    setIsLoading : Dispatch<SetStateAction<{ eventList: boolean; createEvent: boolean; updateEvent: boolean; }>>
     editingEvent : Event | null
     setEditingEvent : Dispatch<SetStateAction<Event | null>>
 
@@ -36,7 +37,9 @@ export interface EventFormInterface {
     setNewEvent : Dispatch<SetStateAction<NewEvent>>
     handleCreateEvent : (e : FormEvent) => void;
     handleUpdateEvent : (e : FormEvent) => void;
-    editingEvent : Event | null
+    editingEvent : Event | null;
+    createEventLoading : boolean;
+    updateEventLoading : boolean;
 }
 
 export interface CalendarInterface {

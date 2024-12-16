@@ -7,7 +7,9 @@ const EventForm : React.FC<EventFormInterface> = ({
     setNewEvent,
     handleCreateEvent,
     handleUpdateEvent,
-    editingEvent
+    editingEvent,
+    createEventLoading,
+    updateEventLoading
 }) => {
     
   return (
@@ -60,7 +62,7 @@ const EventForm : React.FC<EventFormInterface> = ({
           type="submit" 
           className="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1"
         >
-          { editingEvent ? "Update Event" : "Create New Event" }
+          { editingEvent ? updateEventLoading ? "Updating event..." : "Update Event" : createEventLoading ? "Creating event..." : "Create New Event" }
         </button>
       </form>
     </div>

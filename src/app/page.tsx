@@ -10,13 +10,13 @@ export default function HomePage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [isCreateEventOpen, setIsCreateEventOpen] = useState(false);
   const [newEvent, setNewEvent] = useState({ title: '', eventDate: '', eventTime: '', description: '' });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({eventList : false, createEvent : false, updateEvent : false});
   const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
   useEffect(() => {
     const fetchAllEvents = async () => {
         try {
-            setIsLoading(true);
+            setIsLoading({eventList : true, createEvent: false, updateEvent : false});
             const { data } = await axiosClient.get("/api/getAllEvent");
             if(data.success !== true) {
                 toast.error(data.message);
@@ -30,7 +30,7 @@ export default function HomePage() {
             toast.error("Unknown error while creating event...");
             }
         } finally {
-            setIsLoading(false);
+          setIsLoading({eventList : false, createEvent: false, updateEvent : false});
         }
     }
     fetchAllEvents();
@@ -51,6 +51,7 @@ export default function HomePage() {
             newEvent={newEvent}
             setNewEvent={setNewEvent}
             isLoading={isLoading}
+            setIsLoading={setIsLoading}
             editingEvent={editingEvent}
             setEditingEvent={setEditingEvent}
           />
