@@ -94,6 +94,14 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
         }
       }
 
+      const filteredEvents = events.filter((event) => {
+        const eventDate = new Date(event.eventDate);
+        return (
+          eventDate.getFullYear() === currentDate.getFullYear() &&
+          eventDate.getMonth() === currentDate.getMonth()
+        );
+      });
+
   return (
     <aside className="w-full lg:w-96 bg-white p-4 border-b lg:border-r border-gray-200">
         <div className="flex justify-between items-center mb-4">
@@ -125,7 +133,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
               isLoading ? (
                 <SkeletonEvent/>
               ) : (
-                events.map((event) => (
+                filteredEvents.map((event) => (
                   <div key={event.id} className="flex  justify-between bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 transform hover:translate-y-1 border-l-4 border-purple-500">
                       <div className='flex flex-col gap-0'>
                         <h3 className="font-semibold text-purple-600">{event.title}</h3>
