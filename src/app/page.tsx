@@ -1,4 +1,5 @@
 "use client";
+import { Footer } from "@/components";
 import { useEffect, useState } from "react";
 import { CiCalendar, CiClock2 } from "react-icons/ci";
 
@@ -74,6 +75,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

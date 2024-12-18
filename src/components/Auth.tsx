@@ -92,8 +92,8 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
   }, []);
 
   return (
-    <div className="h-screen pt-[65px] bg-gradient-to-br from-blue-100 to-purple-100 flex flex-col justify-center items-center p-4 sm:p-8">
-      <div className="p-6 sm:p-8 rounded-lg shadow-lg max-w-md w-full">
+    <div className="h-screen pt-[65px] bg-gradient-to-br from-blue-300 via-purple-300 to-blue-400 flex flex-col justify-center items-center p-4 sm:p-8">
+      <div className="p-6 sm:p-8 rounded-lg shadow-lg max-w-md w-full bg-gradient-to-br from-blue-300 via-purple-300 to-blue-400">
         <div className="text-center text-purple-800">
           <h1 className="text-3xl font-bold">
             {type === "signup" ? "Sign Up" : "Sign In"}

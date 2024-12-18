@@ -5,6 +5,7 @@ import LeftPanel from "@/components/LeftPanel";
 import EventForm from "@/components/EventForm";
 import Calendar from "@/components/Calendar";
 import SkeletonEvent from "@/components/SkeletonEvent";
+import Footer from "@/components/Footer";
 
 export {
     Header,
@@ -13,5 +14,6 @@ export {
     LeftPanel,
     EventForm,
     Calendar,
-    SkeletonEvent
+    SkeletonEvent,
+    Footer
 };
