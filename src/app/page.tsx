@@ -23,13 +23,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700">
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col items-center justify-center space-y-12">
           <div
             className="text-center opacity-0 translate-y-5 animate-fade-in-up"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Chronos
+              Timekeeper
             </h1>
             <p className="text-xl md:text-2xl text-purple-100 max-w-2xl">
               Your time, beautifully organized. Experience the next generation of
@@ -64,7 +64,7 @@ export default function HomePage() {
             </div>
 
             <button
-              className="bg-white text-purple-700 hover:bg-purple-50 hover:text-purple-800 transition-all duration-300 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl"
+              className="bg-white text-purple-700 hover:bg-purple-50 hover:text-purple-800 transition-all duration-300 text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl"
               onClick={() => {
                 window.location.href = "/signin";
               }}

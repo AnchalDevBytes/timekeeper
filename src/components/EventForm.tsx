@@ -13,7 +13,7 @@ const EventForm : React.FC<EventFormInterface> = ({
 }) => {
     
   return (
-    <div className="mb-6 p-6 bg-white rounded-lg shadow-lg border border-purple-200">
+    <div className="mb-6 p-6 rounded-lg shadow-lg border border-purple-200">
       <h3 className="font-bold mb-4 text-xl text-purple-800">
         { editingEvent ? "Update Event" : "Create New Event" }
       </h3>

@@ -40,7 +40,7 @@ const CalendarPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 lg:p-8">
       <div className="w-full lg:max-w-7xl lg:mx-auto bg-white lg:shadow-xl overflow-hidden lg:rounded-xl">
         <Header/>
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row bg-gradient-to-br from-blue-300 via-purple-300 to-blue-400">
           <LeftPanel 
             currentDate={currentDate}
             setCurrentDate={setCurrentDate}

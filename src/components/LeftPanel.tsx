@@ -110,7 +110,7 @@ const LeftPanel : React.FC<LeftPanelInterface> = ({
       });
 
   return (
-    <aside className="w-full lg:w-96 bg-white p-4 border-b lg:border-r border-gray-200">
+    <aside className="w-full lg:w-96 p-4 border-b lg:border-r border-gray-200">
         <div className="flex justify-between items-center mb-4">
             <button onClick={prevMonth} className="p-2 text-purple-600 hover:bg-purple-100 rounded-full transition-colors duration-200">
             <IoIosArrowBack className="h-6 w-6" />
