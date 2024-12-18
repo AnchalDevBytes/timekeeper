@@ -18,7 +18,7 @@ const Header = () => {
       if (response.data.success) {
         toast.success(response.data.message);
         if(typeof window !== "undefined" && window?.location?.href) {
-          window.location.href = "/signin";
+          window.location.href = "/";
         }
       } else {
         const data: LogoutResponseInterface = response.data;

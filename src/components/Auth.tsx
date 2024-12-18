@@ -50,7 +50,7 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
         toast.error(data.message);
       } else {
         toast.success(data.message || "User signed up successfully!");
-        window.location.href = "/";
+        window.location.href = "/calendar";
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -73,7 +73,7 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
         toast.error(data.message);
       } else {
         toast.success(data.message || "User signed in successfully!");
-        window.location.href = "/";
+        window.location.href = "/calendar";
       }
     } catch (error) {
       if (error instanceof Error) {

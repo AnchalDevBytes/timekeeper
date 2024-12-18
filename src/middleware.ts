@@ -8,19 +8,19 @@ export async function middleware(req : NextRequest) {
     const token = req.cookies.get("token")?.value ?? "";
 
     if(!token && !isPublicPath) {
-        return NextResponse.redirect(new URL("/signin", req.nextUrl));
+        return NextResponse.redirect(new URL("/", req.nextUrl));
     }
 
     if(token && isPublicPath) {
-        return NextResponse.redirect(new URL("/", req.nextUrl));
+        return NextResponse.redirect(new URL("/calendar", req.nextUrl));
     }
 
 } 
 
 export const config = {
     matcher: [
-        "/",
         "/signup",
-        "/signin"
+        "/signin",
+        "/calendar"
     ]
 }
