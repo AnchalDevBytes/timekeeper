@@ -39,7 +39,7 @@ const Header = () => {
     <header className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 flex justify-between items-center shadow-lg">
       <div className="flex items-center space-x-2">
         <FaCalendarAlt className="text-white text-3xl" />
-        <h1 className="text-2xl font-bold text-white tracking-wide">Calendar App</h1>
+        <h1 className="text-2xl font-bold text-white tracking-wide">Timekeeper</h1>
       </div>
       <div className="flex items-center space-x-4">
         <button 

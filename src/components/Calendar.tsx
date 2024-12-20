@@ -54,7 +54,7 @@ const Calendar : React.FC<CalendarInterface> = ({ currentDate, events, setEditin
                         ))}
                     </div>
                 );
-            })};
+            })}
         </div>
     </div>
   )

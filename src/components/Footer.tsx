@@ -13,42 +13,31 @@ const Footer = () => {
               Your time, beautifully organized. Experience smarter scheduling and analytics.
             </p>
           </div>
-          <div className="space-x-4">
-            <button
-              className="bg-white text-purple-700 hover:bg-purple-50 hover:text-purple-800 transition-all duration-300 text-lg px-6 py-3 rounded-full shadow-lg"
-              onClick={() => {
-                window.location.href = "/signin";
-              }}
-            >
-              Get Started
-            </button>
-          </div>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
-          <div className="flex space-x-4">
-            {/* GitHub */}
-            <Link
-              href="https://github.com/AnchalDevBytes/"
-              target="_blank"
-              className="text-purple-200 hover:text-purple-100"
-            >
-              <FaGithub className="w-6 h-6" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/anchaldevbytes/"
-              target="_blank"
-              className="text-purple-200 hover:text-purple-100"
-            >
-              <FaLinkedinIn className="w-6 h-6" />
-            </Link>
-            <Link
-              href="https://x.com/AnchalTwt"
-              target="_blank"
-              className="text-purple-200 hover:text-purple-100"
-            >
-              <FaTwitter className="w-6 h-6" />
-            </Link>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
+            <div className="flex space-x-4">
+              <Link
+                href="https://github.com/AnchalDevBytes/"
+                target="_blank"
+                className="text-purple-200 hover:text-purple-100"
+              >
+                <FaGithub className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/anchaldevbytes/"
+                target="_blank"
+                className="text-purple-200 hover:text-purple-100"
+              >
+                <FaLinkedinIn className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://x.com/AnchalTwt"
+                target="_blank"
+                className="text-purple-200 hover:text-purple-100"
+              >
+                <FaTwitter className="w-6 h-6" />
+              </Link>
+            </div>
           </div>
         </div>
         <div className="text-center text-purple-200 text-sm mt-6">
